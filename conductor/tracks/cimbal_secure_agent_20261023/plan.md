@@ -51,35 +51,35 @@ This plan guides the step-by-step implementation of the Cimbal SA Secure Operati
 
 ## Phase 3: Secure FastAPI Agent Runtime & IAP Middleware
 
-- [ ] Task: App Configuration & TLS Bootstrap
-    - [ ] Write unit test in `tests/test_config.py` verifying config loading and SSL cert resolution
-    - [ ] Implement `src/agent/config.py` with `AppConfig` and `_ensure_ssl_cert_file`
-    - [ ] Verify tests pass for both valid configuration and missing variable errors
+- [x] Task: App Configuration & TLS Bootstrap (689983f)
+    - [x] Write unit test in `tests/test_config.py` verifying config loading and SSL cert resolution
+    - [x] Implement `src/agent/config.py` with `AppConfig` and `_ensure_ssl_cert_file`
+    - [x] Verify tests pass for both valid configuration and missing variable errors
 
-- [ ] Task: IAP Cryptographic JWT Verification Middleware
-    - [ ] Write unit test in `tests/test_iap_middleware.py` testing valid JWT signature, expired token rejection, and mock dev bypass
-    - [ ] Implement `src/agent/middleware/iap.py` validating `X-Goog-IAP-JWT-Assertion` and extracting user claims
-    - [ ] Verify middleware tests pass
+- [x] Task: IAP Cryptographic JWT Verification Middleware (49a499a)
+    - [x] Write unit test in `tests/test_iap_middleware.py` testing valid JWT signature, expired token rejection, and mock dev bypass
+    - [x] Implement `src/agent/middleware/iap.py` validating `X-Goog-IAP-JWT-Assertion` and extracting user claims
+    - [x] Verify middleware tests pass
 
-- [ ] Task: Modular Agent Tools (Search Tool & Read-Only Billing Toolset)
-    - [ ] Write unit test in `tests/test_agent_tools.py` asserting `bypass_multi_tools_limit=True` and `WriteMode.BLOCKED`
-    - [ ] Implement `src/agent/tools/search_tool.py` using `VertexAiSearchTool`
-    - [ ] Implement `src/agent/tools/billing_tool.py` using `BigQueryToolset` and ADC credentials
-    - [ ] Verify tools initialize with correct parameters and mutation queries are rejected
+- [x] Task: Modular Agent Tools (Search Tool & Read-Only Billing Toolset) (377d87f)
+    - [x] Write unit test in `tests/test_agent_tools.py` asserting `bypass_multi_tools_limit=True` and `WriteMode.BLOCKED`
+    - [x] Implement `src/agent/tools/search_tool.py` using `VertexAiSearchTool`
+    - [x] Implement `src/agent/tools/billing_tool.py` using `BigQueryToolset` and ADC credentials
+    - [x] Verify tools initialize with correct parameters and mutation queries are rejected
 
-- [ ] Task: Router System Prompt & Root Agent Assembly
-    - [ ] Write unit test in `tests/test_agent_router.py` asserting system prompt, model configuration, and tool binding
-    - [ ] Implement `src/agent/prompts.py` tailored for Cimbal equipment operations, warranty guidelines, and rate calculations
-    - [ ] Implement `src/agent/agent.py` assembling `LlmAgent` with `gemini-3.5-flash` (`location="global"`)
-    - [ ] Verify agent compiles and exports `root_agent`
+- [x] Task: Router System Prompt & Root Agent Assembly (3e3be18)
+    - [x] Write unit test in `tests/test_agent_router.py` asserting system prompt, model configuration, and tool binding
+    - [x] Implement `src/agent/prompts.py` tailored for Cimbal equipment operations, warranty guidelines, and rate calculations
+    - [x] Implement `src/agent/agent.py` assembling `LlmAgent` with `gemini-3.5-flash` (`location="global"`)
+    - [x] Verify agent compiles and exports `root_agent`
 
-- [ ] Task: Conductor - User Manual Verification 'Secure FastAPI Agent Runtime & IAP Middleware' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Secure FastAPI Agent Runtime & IAP Middleware' (Protocol in workflow.md) (3e3be18)
 
 ---
 
 ## Phase 4: Custom Frontend & Real-Time SSE Stream
 
-- [ ] Task: Custom Frontend Templates & Static Assets
+- [~] Task: Custom Frontend Templates & Static Assets
     - [ ] Create Jinja2 templates in `src/agent/templates/index.html` with Cimbal SA branding, employee profile badge, and chat container
     - [ ] Create CSS styling in `src/agent/static/css/style.css` and JavaScript in `src/agent/static/js/app.js`
     - [ ] Verify template renders user profile and chat UI
