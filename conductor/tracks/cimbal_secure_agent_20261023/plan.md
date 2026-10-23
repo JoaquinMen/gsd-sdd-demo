@@ -6,18 +6,18 @@ This plan guides the step-by-step implementation of the Cimbal SA Secure Operati
 
 ## Phase 1: Infrastructure as Code & VPC Network Blueprint
 
-- [ ] Task: Project Manifests & Configuration Templates
-    - [ ] Create `pyproject.toml` and pinned `requirements.txt` with FastAPI, Google GenAI, ADK, and GCP SDKs
-    - [ ] Create `.env.example` documenting all VPC, Direct IAP, model, and dataset variables
-    - [ ] Verify dependencies install cleanly and environment loads properly
+- [x] Task: Project Manifests & Configuration Templates (f98ff04)
+    - [x] Create `pyproject.toml` and pinned `requirements.txt` with FastAPI, Google GenAI, ADK, and GCP SDKs
+    - [x] Create `.env.example` documenting all VPC, Direct IAP, model, and dataset variables
+    - [x] Verify dependencies install cleanly and environment loads properly
 
-- [ ] Task: Terraform VPC, Subnet, and Cloud Run Direct IAP Modules
-    - [ ] Implement `terraform/modules/vpc/` with custom VPC network and subnet configured for Private Google Access
-    - [ ] Implement `terraform/modules/cloud_run/` configured with `iap_enabled = true` and Direct VPC Egress
-    - [ ] Implement `terraform/modules/iam/` granting `roles/run.invoker` to the IAP Service Agent
-    - [ ] Implement `terraform/modules/bigquery/` and `terraform/modules/storage/` for Cimbal data assets
-    - [ ] Implement root `terraform/main.tf`, `variables.tf`, and `outputs.tf`
-    - [ ] Run `terraform -chdir=terraform validate` to verify syntax
+- [x] Task: Terraform VPC, Subnet, and Cloud Run Direct IAP Modules (e456f21)
+    - [x] Implement `terraform/modules/vpc/` with custom VPC network and subnet configured for Private Google Access
+    - [x] Implement `terraform/modules/cloud_run/` configured with `iap_enabled = true` and Direct VPC Egress
+    - [x] Implement `terraform/modules/iam/` granting `roles/run.invoker` to the IAP Service Agent
+    - [x] Implement `terraform/modules/bigquery/` and `terraform/modules/storage/` for Cimbal data assets
+    - [x] Implement root `terraform/main.tf`, `variables.tf`, and `outputs.tf`
+    - [x] Run `terraform -chdir=terraform validate` to verify syntax
 
 - [ ] Task: Conductor - User Manual Verification 'Infrastructure as Code & VPC Network Blueprint' (Protocol in workflow.md)
 
