@@ -69,7 +69,7 @@ def run_unified_setup(
     print("Provisioning pipeline completed successfully.")
     print("================================================================================")
 
-def main():
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Cimbal SA Master Data & Infrastructure Provisioning CLI")
     parser.add_argument("--wait", action="store_true", help="Wait for asynchronous cloud operations to complete")
     parser.add_argument("--skip-pdfs", action="store_true", help="Skip local PDF generation")
@@ -77,8 +77,13 @@ def main():
     parser.add_argument("--skip-bigquery", action="store_true", help="Skip BigQuery dataset/table creation and seeding")
     parser.add_argument("--docs-dir", default="data/equipment_docs", help="Directory for generated PDF documents")
     parser.add_argument("--days-back", type=int, default=21, help="Number of rolling days of synthetic billing logs to seed")
+    return parser
 
-    args = parser.parse_args()
+def parse_args(args=None) -> argparse.Namespace:
+    return build_parser().parse_args(args)
+
+def main():
+    args = parse_args()
     run_unified_setup(
         skip_pdfs=args.skip_pdfs,
         skip_search=args.skip_search,
