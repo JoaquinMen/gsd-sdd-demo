@@ -95,13 +95,13 @@ This plan guides the step-by-step implementation of the Cimbal SA Secure Operati
 
 ## Phase 5: Verification Suite & Quality Assurance
 
-- [~] Task: Comprehensive Unit Test Suite
-    - [ ] Implement `tests/conftest.py` with mock environments and GCP client patches
-    - [ ] Run `pytest -v tests/` and confirm 100% pass rate
-    - [ ] Confirm code coverage exceeds 80%
+- [x] Task: Comprehensive Unit Test Suite (089a74b)
+    - [x] Implement `tests/conftest.py` with mock environments and GCP client patches
+    - [x] Run `pytest -v tests/` and confirm 100% pass rate
+    - [x] Confirm code coverage exceeds 80%
 
-- [ ] Task: Live End-to-End Smoke Verification CLI
-    - [ ] Implement `src/provisioning/verify_e2e.py` testing live BigQuery query, Discovery Engine search, and ADK invocation
-    - [ ] Verify CLI handles credentials and outputs diagnostic summaries
+- [x] Task: Live End-to-End Smoke Verification CLI (dde282f)
+    - [x] Implement `src/provisioning/verify_e2e.py` testing live BigQuery query, Discovery Engine search, and ADK invocation
+    - [x] Verify CLI handles credentials and outputs diagnostic summaries
 
-- [ ] Task: Conductor - User Manual Verification 'Verification Suite & Quality Assurance' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Verification Suite & Quality Assurance' (Protocol in workflow.md) (dde282f)
