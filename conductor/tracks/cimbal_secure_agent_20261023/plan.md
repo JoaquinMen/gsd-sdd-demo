@@ -79,23 +79,23 @@ This plan guides the step-by-step implementation of the Cimbal SA Secure Operati
 
 ## Phase 4: Custom Frontend & Real-Time SSE Stream
 
-- [~] Task: Custom Frontend Templates & Static Assets
-    - [ ] Create Jinja2 templates in `src/agent/templates/index.html` with Cimbal SA branding, employee profile badge, and chat container
-    - [ ] Create CSS styling in `src/agent/static/css/style.css` and JavaScript in `src/agent/static/js/app.js`
-    - [ ] Verify template renders user profile and chat UI
+- [x] Task: Custom Frontend Templates & Static Assets (a311415)
+    - [x] Create Jinja2 templates in `src/agent/templates/index.html` with Cimbal SA branding, employee profile badge, and chat container
+    - [x] Create CSS styling in `src/agent/static/css/style.css` and JavaScript in `src/agent/static/js/app.js`
+    - [x] Verify template renders user profile and chat UI
 
-- [ ] Task: FastAPI Application & SSE Chat Endpoint
-    - [ ] Write unit test in `tests/test_app.py` verifying `/healthz`, `/`, and `/api/v1/chat/stream` routes
-    - [ ] Implement `src/agent/main.py` assembling FastAPI app, mounting static files, registering IAP middleware, and streaming responses
-    - [ ] Verify streaming route dispatches to `Runner.run_async` and yields formatted SSE events
+- [x] Task: FastAPI Application & SSE Chat Endpoint (e29ef32)
+    - [x] Write unit test in `tests/test_app.py` verifying `/healthz`, `/`, and `/api/v1/chat/stream` routes
+    - [x] Implement `src/agent/main.py` assembling FastAPI app, mounting static files, registering IAP middleware, and streaming responses
+    - [x] Verify streaming route dispatches to `Runner.run_async` and yields formatted SSE events
 
-- [ ] Task: Conductor - User Manual Verification 'Custom Frontend & Real-Time SSE Stream' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Custom Frontend & Real-Time SSE Stream' (Protocol in workflow.md) (e29ef32)
 
 ---
 
 ## Phase 5: Verification Suite & Quality Assurance
 
-- [ ] Task: Comprehensive Unit Test Suite
+- [~] Task: Comprehensive Unit Test Suite
     - [ ] Implement `tests/conftest.py` with mock environments and GCP client patches
     - [ ] Run `pytest -v tests/` and confirm 100% pass rate
     - [ ] Confirm code coverage exceeds 80%
