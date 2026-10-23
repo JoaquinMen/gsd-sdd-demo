@@ -1,19 +1,20 @@
-# Initial Concept
-Rebuild the Enterprise Operations & HR Intelligence Agent platform based on the solution specification in prev-engagements/SPEC.md.
-
-# Product Guide
+# Product Guide: Cimbal SA Secure Operations & Agriculture Intelligence Platform
 
 ## Vision
-The Enterprise Operations & HR Intelligence Agent is a unified conversational operational intelligence platform built with the Google Agent Development Kit (ADK) and Vertex AI. It bridges unstructured organizational knowledge (regional holiday schedules, leave policies, benefits handbooks) with structured transactional data (analytical time-tracking, consultant billing hours, project rates) in a single-agent, multi-tool architecture.
+The Cimbal SA Secure Operations Platform is an enterprise-grade conversational AI assistant designed for Cimbal SA—a leading retail and field service company specializing in agricultural machinery (tractors, combine harvesters, planters, sprayers). The platform enables field technicians, dealership managers, and operations personnel to query both unstructured equipment documentation (operator manuals, warranty coverage guidelines, regional service rates) and structured operational databases (field service billing logs, technician labor hours, parts costs) in a single unified interface.
 
-## Target Users
-- **Operations & Finance Leads**: Tracking project billing hours, revenue totals, consultant utilization, and rate multipliers across client engagements.
-- **People Operations / HR Specialists**: Answering employee inquiries regarding cross-border holiday schedules, parental/maternity/paternity leave, PTO accruals, and health benefits.
-- **Engagement Managers & Delivery Consultants**: Verifying billing compliance, checking project time logs, and reviewing regional holiday billing policies.
+## Security Mandates
+- **Perimeter Defense**: Zero public exposure of backend databases or models.
+- **Identity-Aware Proxy (IAP)**: Direct IAP enabled on Cloud Run with cryptographic server-side validation of `X-Goog-IAP-JWT-Assertion`.
+- **Network Isolation**: All outbound traffic routes through a custom VPC using **Direct VPC Egress** and **Private Google Access** to communicate with Vertex AI, BigQuery, and Discovery Engine over Google's private network backbone.
+- **Read-Only Data Governance**: Programmatic enforcement (`WriteMode.BLOCKED`) preventing any non-`SELECT` database mutations.
 
-## Core Features & Capabilities
-1. **Unified Natural Language Routing**: Dynamic, single-turn query routing between unstructured document retrieval and structured SQL execution powered by `gemini-3.5-flash`.
-2. **Read-Only Data Governance**: Hard programmatic protection (`WriteMode.BLOCKED`) preventing any non-`SELECT` database mutations against analytical billing tables.
-3. **Grounded Policy Retrieval**: Semantic search with document chunk citations over regional policy documents indexed in Vertex AI Search (Discovery Engine).
-4. **Cross-Domain Synthesis**: Answering complex inquiries that correlate policy guidelines (e.g., statutory holiday rates) with transactional time records in a single turn.
-5. **Automated Provisioning Pipeline**: Idempotent document generation, Cloud Storage staging, Discovery Engine indexing, and BigQuery data seeding with dynamic rolling dates.
+## Target User Personas
+- **Field Service Technicians**: Look up troubleshooting steps, hydraulic specs, warranty limits, and log billable service hours from the field.
+- **Dealership Service Managers**: Track labor utilization, verify warranty claim classifications, audit emergency rate multipliers (1.5x during harvest season), and monitor regional parts expenses.
+- **Operations & Finance Directors**: Analyze operational service revenue, customer vs. warranty split, and technician productivity across regional dealership hubs.
+
+## Core Capabilities
+1. **Custom FastAPI Web Portal**: Replaces generic ADK Web with a branded, responsive corporate portal displaying authenticated employee identity badges and streaming real-time responses.
+2. **Dual-Domain Reasoning (`gemini-3.5-flash`)**: Dynamically routes questions across unstructured Discovery Engine search and structured BigQuery analytical SQL within a single conversational turn.
+3. **Automated Provisioning**: Idempotent generation of agricultural equipment documentation, Cloud Storage staging, Discovery Engine indexing, and rolling date BigQuery table seeding.
