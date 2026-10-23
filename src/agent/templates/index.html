@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cimbal SA | Secure Equipment Operations Intelligence</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <div class="brand-logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <h1>Cimbal SA</h1>
+                <span class="subtext">Secure Agricultural Operations & Intelligence</span>
+            </div>
+        </div>
+
+        <div class="header-badges">
+            <div class="network-badge" title="Direct VPC Egress with Private Google Access">
+                <span class="pulse-dot"></span>
+                <span>Direct VPC Egress</span>
+            </div>
+
+            <div class="user-badge" id="userBadge">
+                <div class="user-avatar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div class="user-details">
+                    <span class="user-email">{{ user.email }}</span>
+                    <span class="user-role">{{ user.role }}</span>
+                </div>
+                <div class="iap-pill" title="Cryptographically verified Identity-Aware Proxy JWT assertion">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    <span>IAP Protected</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-layout">
+        <!-- Sidebar Navigation & Data Source Context -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Connected Systems</h3>
+                <div class="system-item">
+                    <div class="system-icon bq-icon">BQ</div>
+                    <div class="system-meta">
+                        <strong>Warehouse (Read-Only)</strong>
+                        <code>{{ bq_table }}</code>
+                    </div>
+                </div>
+                <div class="system-item">
+                    <div class="system-icon search-icon">VS</div>
+                    <div class="system-meta">
+                        <strong>Policy Corpus</strong>
+                        <code>{{ search_ds }}</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Quick Operational Inquiries</h3>
+                <div class="quick-prompts">
+                    <button class="quick-btn" data-prompt="What is our warranty labor rate policy during harvest emergency, and how does the 1.5x multiplier apply?">
+                        🌾 Harvest Emergency 1.5x Multiplier
+                    </button>
+                    <button class="quick-btn" data-prompt="Summarize total service billing revenue and labor hours for Tractor 8R by dealership region.">
+                        🚜 Tractor 8R Regional Revenue
+                    </button>
+                    <button class="quick-btn" data-prompt="What are the diagnostic symptoms and recommended actions for trouble code DTC-HYD-401?">
+                        🔧 DTC-HYD-401 Diagnostic Code
+                    </button>
+                    <button class="quick-btn" data-prompt="Check service log SRV-2001: Was the harvest emergency rate correctly applied for combine repairs?">
+                        📋 Verify Service Log SRV-2001
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="security-notice">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Enterprise Governance Active</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Conversational Interface -->
+        <main class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message assistant-message">
+                    <div class="message-avatar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="message-content">
+                        <p>Welcome to <strong>Cimbal SA Secure Operations Intelligence</strong>. I can assist you with:</p>
+                        <ul>
+                            <li><strong>Unstructured Knowledge:</strong> Warranty terms, harvest emergency labor multipliers (1.5x), operator manuals, hydraulic service intervals, and DTC codes.</li>
+                            <li><strong>Analytical Warehouse:</strong> Technician labor logs, parts costs, regional revenue totals, and warranty claim audits.</li>
+                        </ul>
+                        <p class="greeting-hint">Select a quick prompt on the left or type your operational inquiry below.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-bar">
+                <form id="chatForm" class="chat-form">
+                    <textarea 
+                        id="promptInput" 
+                        class="prompt-input" 
+                        placeholder="Ask about machinery specs, warranty rules, service logs, or technician billing..." 
+                        rows="1" 
+                        required></textarea>
+                    <button type="submit" id="sendBtn" class="send-btn" aria-label="Send message">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
