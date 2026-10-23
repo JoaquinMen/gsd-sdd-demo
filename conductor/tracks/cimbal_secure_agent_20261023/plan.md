@@ -25,25 +25,25 @@ This plan guides the step-by-step implementation of the Cimbal SA Secure Operati
 
 ## Phase 2: Domain Provisioning Pipeline (Cimbal SA Equipment)
 
-- [ ] Task: Equipment Documentation & Warranty PDF Generator
-    - [ ] Write unit test in `tests/test_document_generator.py` asserting generated PDF content for Cimbal equipment
-    - [ ] Implement `src/provisioning/generate_documents.py` creating 3 PDFs (`equipment_warranty_guidelines.pdf`, `machinery_operator_manuals.pdf`, `regional_service_rates.pdf`)
-    - [ ] Verify test passes and PDFs are generated in `data/equipment_docs/`
+- [x] Task: Equipment Documentation & Warranty PDF Generator (bd6c013)
+    - [x] Write unit test in `tests/test_document_generator.py` asserting generated PDF content for Cimbal equipment
+    - [x] Implement `src/provisioning/generate_documents.py` creating 3 PDFs (`equipment_warranty_guidelines.pdf`, `machinery_operator_manuals.pdf`, `regional_service_rates.pdf`)
+    - [x] Verify test passes and PDFs are generated in `data/equipment_docs/`
 
-- [ ] Task: Cloud Storage Staging & Discovery Engine Datastore Pipeline
-    - [ ] Write unit test in `tests/test_setup_discovery_engine.py` mocking GCS upload and Discovery Engine import
-    - [ ] Implement `src/provisioning/setup_discovery_engine.py` with idempotent bucket creation and document import
-    - [ ] Verify test passes with mocked GCP services
+- [x] Task: Cloud Storage Staging & Discovery Engine Datastore Pipeline (b973e67)
+    - [x] Write unit test in `tests/test_setup_discovery_engine.py` mocking GCS upload and Discovery Engine import
+    - [x] Implement `src/provisioning/setup_discovery_engine.py` with idempotent bucket creation and document import
+    - [x] Verify test passes with mocked GCP services
 
-- [ ] Task: BigQuery Equipment Service Billing Seeding Pipeline
-    - [ ] Write unit test in `tests/test_seed_warehouse.py` asserting rolling dynamic dates, 13-column schema, and equipment models
-    - [ ] Implement `src/provisioning/seed_warehouse.py` seeding `cimbal_operations.equipment_service_billing` using `WRITE_TRUNCATE`
-    - [ ] Verify test passes confirming dynamic date generation
+- [x] Task: BigQuery Equipment Service Billing Seeding Pipeline (59bc98c)
+    - [x] Write unit test in `tests/test_seed_warehouse.py` asserting rolling dynamic dates, 13-column schema, and equipment models
+    - [x] Implement `src/provisioning/seed_warehouse.py` seeding `cimbal_operations.equipment_service_billing` using `WRITE_TRUNCATE`
+    - [x] Verify test passes confirming dynamic date generation
 
-- [ ] Task: Unified Provisioning CLI
-    - [ ] Implement `src/provisioning/setup_all.py` coordinating PDF generation, search setup, and BQ seeding
-    - [ ] Add CLI arguments for `--wait`, `--skip-pdfs`, `--skip-search`, and `--skip-bigquery`
-    - [ ] Verify CLI help and compilation
+- [x] Task: Unified Provisioning CLI (f76155e)
+    - [x] Implement `src/provisioning/setup_all.py` coordinating PDF generation, search setup, and BQ seeding
+    - [x] Add CLI arguments for `--wait`, `--skip-pdfs`, `--skip-search`, and `--skip-bigquery`
+    - [x] Verify CLI help and compilation
 
 - [ ] Task: Conductor - User Manual Verification 'Domain Provisioning Pipeline (Cimbal SA Equipment)' (Protocol in workflow.md)
 
